@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Письмо Деду Морозу 🎄</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #241956, #2c2146 65%, #030b12);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* СНЕГ */
+
+.snow {
+    position: fixed;
+    top: -10px;
+    color: white;
+    user-select: none;
+    pointer-events: none;
+    animation: snowfall linear infinite;
+    z-index: 10;
+    opacity: 0.7;
+}
+
+@keyframes snowfall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+/* ФОН */
+
+.glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: #c58c35;
+    filter: blur(180px);
+    opacity: 0.12;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+/* ОСНОВНОЙ БЛОК */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    position: relative;
+}
+
+.letter {
+    width: 100%;
+    max-width: 700px;
+    background: linear-gradient(145deg, #fff8e9, #ead9b8);
+    color: #35291e;
+    padding: 55px 60px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 30px 100px #0009;
+    animation: appear 1.2s ease forwards;
+    transform-origin: center;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(60px) rotateX(10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+/* ДЕКОРАТИВНАЯ РАМКА */
+
+.letter::before {
+    content: "";
+    position: absolute;
+    inset: 13px;
+    border: 1px solid #b69a6b;
+    pointer-events: none;
+}
+
+.top {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.top .star {
+    color: #b58b40;
+    font-size: 32px;
+}
+
+.top h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 6vw, 43px);
+    margin-top: 12px;
+    color: #713c25;
+}
+
+.top p {
+    color: #977d5d;
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-top: 10px;
+}
+
+.line {
+    width: 80px;
+    height: 2px;
+    background: #b58b40;
+    margin: 25px auto;
+}
+
+/* ТЕКСТ ПИСЬМА */
+
+.greeting {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    margin-bottom: 22px;
+    color: #75452e;
+}
+
+.letter-text {
+    font-size: 14px;
+    line-height: 2;
+    color: #5d4b39;
+}
+
+.keyboard-name {
+    display: inline-block;
+    color: #9c542b;
+    font-weight: 700;
+    border-bottom: 1px solid #b58b40;
+    padding-bottom: 2px;
+}
+
+/* КАРТОЧКА КЛАВИАТУРЫ */
+
+.keyboard-section {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.keyboard-frame {
+    width: 100%;
+    max-width: 490px;
+    padding: 20px;
+    text-align: center;
+
+    background: linear-gradient(145deg, #fffdf6, #eee1c9);
+    border: 1px solid #c6a46b;
+    border-radius: 14px;
+
+    box-shadow:
+        0 15px 35px #674a2925,
+        inset 0 0 25px #c9a76a20;
+
+    animation: keyboardFloat 4s ease-in-out infinite;
+    transition: .4s;
+}
+
+.keyboard-frame:hover {
+    box-shadow:
+        0 20px 45px #a17a4640,
+        0 0 30px #d8b66a40;
+}
+
+.keyboard-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #a17c43;
+    margin-bottom: 15px;
+}
+
+/* ФОТОГРАФИЯ */
+
+.keyboard-link {
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+.keyboard-photo {
+    display: block;
+    width: 100%;
+    max-width: 390px;
+    height: auto;
+    margin: auto;
+    object-fit: contain;
+
+    filter: drop-shadow(0 12px 10px #00000020);
+    transition: .5s;
+}
+
+.keyboard-link:hover .keyboard-photo {
+    transform: scale(1.06);
+    filter: drop-shadow(0 15px 18px #b58b4070);
+}
+
+.keyboard-link::after {
+    content: "✦ НАЖМИ, ЧТОБЫ ПОСМОТРЕТЬ ПОДАРОК ✦";
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #a17c43;
+    margin-top: 12px;
+    opacity: .65;
+    transition: .3s;
+}
+
+.keyboard-link:hover::after {
+    opacity: 1;
+    letter-spacing: 3px;
+}
+
+.keyboard-info {
+    margin-top: 18px;
+}
+
+.keyboard-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #75452e;
+    letter-spacing: 1px;
+}
+
+.keyboard-info p {
+    margin-top: 8px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #a17c43;
+}
+
+@keyframes keyboardFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+/* ПОДПИСЬ */
+
+.signature {
+    text-align: right;
+    margin-top: 35px;
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    color: #75452e;
+}
+
+.signature span {
+    display: block;
+    font-size: 13px;
+    margin-top: 8px;
+    font-family: 'Montserrat', sans-serif;
+    color: #967d60;
+}
+
+/* КНОПКА */
+
+.button-wrapper {
+    text-align: center;
+    margin-top: 35px;
+}
+
+button {
+    border: none;
+    padding: 16px 35px;
+    background: linear-gradient(135deg, #a94b34, #762b26);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 8px 25px #762b2640;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px #762b2670;
+    background: linear-gradient(135deg, #c35d42, #91372c);
+}
+
+
+/* СОВЕТ ДИРЕКТОРОВ */
+
+.board {
+    margin: 40px 0 20px;
+    padding: 25px 15px;
+    border: 1px dashed #b58b40;
+    border-radius: 12px;
+    text-align: center;
+    background: #b58b400d;
+}
+
+.board h2 {
+    font-family: 'Playfair Display', serif;
+    color: #75452e;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.pets {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pet {
+    flex: 1;
+    padding: 18px 10px;
+    background: #fffaf0;
+    border: 1px solid #ddc79e;
+    border-radius: 12px;
+    transition: .4s;
+}
+
+.pet:hover {
+    transform: translateY(-8px) rotate(-2deg);
+    box-shadow: 0 12px 25px #8b653030;
+}
+
+.pet-icon {
+    font-size: 55px;
+    animation: petBounce 3s ease-in-out infinite;
+}
+
+.pet h3 {
+    font-family: 'Playfair Display', serif;
+    color: #75452e;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.pet p {
+    font-size: 11px;
+    line-height: 1.7;
+    color: #765e44;
+}
+
+.pet span {
+    display: block;
+    margin-top: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #66834b;
+}
+
+.board-stamp {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 10px 18px;
+    border: 2px solid #a94b34;
+    border-radius: 50%;
+    color: #a94b34;
+    font-weight: 700;
+    font-size: 11px;
+    transform: rotate(-5deg);
+}
+
+@keyframes petBounce {/* СОВЕТ ДИРЕКТОРОВ */
+
+.board {
+    margin: 40px 0 20px;
+    padding: 25px 15px;
+    border: 1px dashed #b58b40;
+    border-radius: 12px;
+    text-align: center;
+    background: #b58b400d;
+}
+
+.board h2 {
+    font-family: 'Playfair Display', serif;
+    color: #75452e;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.pets {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.pet {
+    flex: 1;
+    padding: 18px 10px;
+    background: #fffaf0;
+    border: 1px solid #ddc79e;
+    border-radius: 12px;
+    transition: .4s;
+}
+
+.pet:hover {
+    transform: translateY(-8px) rotate(-2deg);
+    box-shadow: 0 12px 25px #8b653030;
+}
+
+.pet-icon {
+    font-size: 55px;
+    animation: petBounce 3s ease-in-out infinite;
+}
+
+.pet h3 {
+    font-family: 'Playfair Display', serif;
+    color: #75452e;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.pet p {
+    font-size: 11px;
+    line-height: 1.7;
+    color: #765e44;
+}
+
+.pet span {
+    display: block;
+    margin-top: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #66834b;
+}
+
+.board-stamp {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 10px 18px;
+    border: 2px solid #a94b34;
+    border-radius: 50%;
+    color: #a94b34;
+    font-weight: 700;
+    font-size: 11px;
+    transform: rotate(-5deg);
+}
+
+@keyframes petBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@media (max-width: 450px) {
+    .pets {
+        flex-direction: column;
+    }
+}
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@media (max-width: 450px) {
+    .pets {
+        flex-direction: column;
+    }
+}
+
+
+/* СЕКРЕТ */
+
+.secret {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    text-align: center;
+    transition: 1s ease;
+}
+
+.secret.active {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 25px;
+}
+
+.secret h2 {
+    font-family: 'Playfair Display', serif;
+    color: #a05232;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.secret p {
+    color: #765e44;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* АДАПТИВНОСТЬ */
+
+@media (max-width: 600px) {
+    .letter {
+        padding: 40px 28px;
+    }
+
+    .letter-text {
+        font-size: 12px;
+    }
+
+    .keyboard-info h2 {
+        font-size: 18px;
+    }
+
+    button {
+        padding: 14px 20px;
+        font-size: 10px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<main class="container">
+
+    <div class="letter">
+
+        <div class="top">
+            <div class="star">✦ ❄ ✦</div>
+            <h1>Письмо Деду Морозу</h1>
+            <p>От ДАНИКА</p>
+            <div class="line"></div>
+        </div>  
+
+        <div class="greeting">
+            Дорогой Дедушка Мороз!
+        </div>
+
+        <div class="letter-text">
+
+            Здравствуй! Надеюсь, у тебя всё хорошо и ты уже
+            готовишься к самому волшебному празднику года.
+
+            <br><br>
+
+            В этом году я старался вести себя хорошо,
+            поэтому решил написать тебе своё небольшое
+            новогоднее желание.
+
+            <br><br>
+
+            Я давно мечтаю об одной вещи, которая сделает
+            мой Новый год по-настоящему особенным.
+
+            <br><br>
+
+            Я был бы очень рад получить:
+
+            <br><br>
+
+            <span class="keyboard-name">
+                MCHOSE MC-ACE68 GT
+            </span>
+
+        </div>
+
+        <!-- КЛАВИАТУРА -->
+
+        <div class="keyboard-section">
+
+            <div class="keyboard-frame">
+
+                <div class="keyboard-label">
+                    ✦ YOUR CHRISTMAS WISH ✦
+                </div>
+
+                <a
+                    href="https://www.m79.lv/p/products/402383104/Bez+kategorijas/Mchose/MC-Ace68GT-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="keyboard-link"
+                >
+                    <img
+                        src="keyboard.png"
+                        alt="MCHOSE MC-ACE68 GT"
+                        class="keyboard-photo"
+                    >
+                </a>
+
+                <div class="keyboard-info">
+                    <h2>MCHOSE MC-ACE68 GT</h2>
+                    <p>THE PERFECT CHRISTMAS GIFT</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ОБОСНОВАНИЕ -->
+
+        <div class="letter-text">
+
+            Я считаю, что эта клавиатура мне действительно
+            необходима, и сейчас объясню почему.
+
+            <br><br>
+
+            Во-первых, моей нынешней клавиатуре уже очень
+            плохо. Она пережила слишком много, её кнопки
+             уже мечтают о пенсии. Мне кажется,
+            будет гуманно наконец то отправить ее
+            на заслуженный отдых.
+
+            <br><br>
+
+            Во-вторых, новая клавиатура - это инвестиция
+            в моё будущее. Я уверен, что с MCHOSE MC-ACE68 GT
+            моя продуктивность вырастет настолько, что я
+            смогу заработать свой первый миллион.
+            Возможно, даже два.
+            Всё это, разумеется, начнётся с твоего подарка.
+
+            <br><br>
+
+            В-третьих, посмотри на неё. Она настолько
+            красивая, что даже просто находиться рядом
+            с ней будет повышать мою самооценку
+            и желание учиться.
+
+            <br><br>
+
+            Я не прошу машину, квартиру или яхту.
+            Всего лишь одну маленькую клавиатуру,
+            которая, возможно, изменит ход моей
+            жизни.
+
+            <br><br>
+
+            Поэтому, дорогой Дедушка Мороз,
+            не упусти возможность инвестировать
+            в будущего миллионера.
+
+            <br><br>
+
+            Обещаю, когда заработаю свой первый миллион,
+            обязательно вспомню, с чего всё начиналось.
+
+            <br><br>
+
+            С наступающим Новым годом!
+
+        </div>
+
+        <div class="signature">
+            С уважением,
+            <span>Даник ♡</span>
+        </div>
+
+        <div class="button-wrapper">
+
+            <button onclick="openGift()">
+                ОТКРЫТЬ ПОСЛЕДНЕЕ ЖЕЛАНИЕ ✦
+            </button>
+
+        </div>
+
+        <div class="secret" id="secret">
+
+            <h2>
+                Чтобы мама с папой не ругались никогда,
+                не болели и жили долго и счастливо!
+            </h2>
+
+            <p>Вот это был бы идеальный Новый год!</p>
+            <p>Надеюсь, ты получил моё письмо ❤️</p>
+
+        </div>
+
+<div class="board">
+
+    <h2>🐾 Совет директоров по выбору подарка</h2>
+
+    <div class="pets">
+
+        <div class="pet">
+            <div class="pet-icon">🐈‍⬛</div>
+            <h3>Мотя</h3>
+            <p>Главный эксперт по клавиатурам.</p>
+            <span>ОДОБРЯЕТ ПОКУПКУ ✔</span>
+            <span>ПОГЛАДЬТЕ</span>
+        </div>
+
+        <div class="pet">
+            <div class="pet-icon">🐶</div>
+            <h3>Цаца</h3>
+            <p>Финансовый директор.</p>
+            <span>ДАЙТЕ ЕДЫ!</span>
+        </div>
+
+    </div>
+
+    <div class="board-stamp">
+        ✦ ОФИЦИАЛЬНО ОДОБРЕНО ✦
+    </div>
+
+</div>
+
+
+    </div>
+
+</main>
+
+<script>
+
+// ПАДАЮЩИЙ СНЕГ
+
+for (let i = 0; i < 65; i++) {
+
+    const snow = document.createElement('div');
+
+    snow.className = 'snow';
+    snow.textContent = Math.random() > 0.5 ? '❄' : '•';
+
+    snow.style.left = Math.random() * 100 + 'vw';
+    snow.style.animationDuration = (5 + Math.random() * 10) + 's';
+    snow.style.animationDelay = Math.random() * 10 + 's';
+    snow.style.fontSize = (8 + Math.random() * 14) + 'px';
+
+    document.body.appendChild(snow);
+
+}
+
+// ОТКРЫТИЕ ЖЕЛАНИЯ
+
+function openGift() {
+
+    document.getElementById('secret').classList.toggle('active');
+
+}
+
+</script>
+
+</body>
+</html>
